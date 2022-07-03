@@ -2,10 +2,12 @@
 #include <GL/freeglut.h>
 #include <GL/glu.h>
 #include <stdlib.h>
+#include <string.h>
 #include "HiResTimer.h"
 #include "object.h"
-#include <string.h>
+#include "keyboard.h"
 
+Keyboard *keyboardPtr;
 int w=1000,h=700;
 void
 output(int x, int y, char *string);
@@ -72,18 +74,10 @@ display(void)
     glutSwapBuffers();
 }
 
-void 
+static void 
 key(unsigned char key, int x, int y)
 {
-    switch (key) 
-    {
-        case 27 : 
-        case 'q':
-            exit(0);
-            break;
-    }
-
-    glutPostRedisplay();
+	keyboardPtr->key(key, x, y);
 }
 
 static void 
@@ -107,13 +101,13 @@ output(int x, int y, char *string)
 int 
 main(int argc, char *argv[])
 {
+	Keyboard keyboard;
+	keyboardPtr = &keyboard;
     glutInit(&argc, argv);
     glutInitWindowSize(w,h);
     glutInitWindowPosition(0,0);
     glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE);
-
     glutCreateWindow("Fizyka");
-
     glutReshapeFunc(resize);
     glutDisplayFunc(display);
     glutKeyboardFunc(key);

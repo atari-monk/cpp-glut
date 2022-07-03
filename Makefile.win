@@ -5,10 +5,10 @@ CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
 RES      = cpp-kinematics_private.res
-OBJ      = main.o object.o $(RES)
-LINKOBJ  = main.o object.o $(RES)
-CLEANOBJ  =  main.o object.o cpp-kinematics_private.res cpp-kinematics.exe
-LIBS     =  -s -mwindows -lm -lfreeglut.dll -lopengl32 -lglu32 -lwinmm -lgdi32 -static
+OBJ      = main.o object.o keyboard.o $(RES)
+LINKOBJ  = main.o object.o keyboard.o $(RES)
+CLEANOBJ  =  main.o object.o keyboard.o cpp-kinematics_private.res cpp-kinematics.exe
+LIBS     =  -mwindows -lm -lfreeglut.dll -lopengl32 -lglu32 -lwinmm -lgdi32 -static
 INCS     =  
 CXXINCS  =  
 BIN      = cpp-kinematics.exe
@@ -26,11 +26,14 @@ clean: clean-custom
 $(BIN): $(OBJ)
 	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
 
-main.o: main.cpp object.h
+main.o: main.cpp
 	$(CPP) -c C:/kmazanek.gmail.com/Code/cpp-kinematics/main.cpp -o main.o $(CXXFLAGS) 
 
-object.o: object.cpp object.h
+object.o: object.cpp
 	$(CPP) -c C:/kmazanek.gmail.com/Code/cpp-kinematics/object.cpp -o object.o $(CXXFLAGS) 
+
+keyboard.o: keyboard.cpp
+	$(CPP) -c C:/kmazanek.gmail.com/Code/cpp-kinematics/keyboard.cpp -o keyboard.o $(CXXFLAGS) 
 
 cpp-kinematics_private.res: cpp-kinematics_private.rc 
 	$(WINDRES) -i cpp-kinematics_private.rc --input-format=rc -o cpp-kinematics_private.res -O coff 
