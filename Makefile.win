@@ -26,10 +26,10 @@ clean: clean-custom
 $(BIN): $(OBJ)
 	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
 
-main.o: main.cpp
+main.o: main.cpp object.h
 	$(CPP) -c C:/kmazanek.gmail.com/Code/cpp-kinematics/main.cpp -o main.o $(CXXFLAGS) 
 
-object.o: object.cpp
+object.o: object.cpp object.h
 	$(CPP) -c C:/kmazanek.gmail.com/Code/cpp-kinematics/object.cpp -o object.o $(CXXFLAGS) 
 
 cpp-kinematics_private.res: cpp-kinematics_private.rc 
