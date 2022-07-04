@@ -84,18 +84,6 @@ void ShowOldDisplay()
 	glutSwapBuffers();
 };
 
-void *font = GLUT_BITMAP_TIMES_ROMAN_24;
-void output(int x, int y, char *string)
-{
-	int len, i;
-	
-	glRasterPos2f(x, y);
-	len = (int) strlen(string);
-	for (i = 0; i < len; i++) {
-		glutBitmapCharacter(font, string[i]);
-	}
-}
-
 static void 
 key(unsigned char key, int x, int y)
 {
@@ -136,7 +124,6 @@ main(int argc, char *argv[])
   
     glClearColor(1,1,1,1);
     glPointSize(4);
-    //timer.init();
 
 	obj1.set_v(50000,500);
     obj2.set_a(0,1);
