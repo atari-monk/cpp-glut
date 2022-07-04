@@ -5,9 +5,9 @@ CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
 RES      = cpp-kinematics_private.res
-OBJ      = main.o object.o keyboard.o resizer.o $(RES)
-LINKOBJ  = main.o object.o keyboard.o resizer.o $(RES)
-CLEANOBJ  =  main.o object.o keyboard.o resizer.o cpp-kinematics_private.res cpp-kinematics.exe
+OBJ      = main.o object.o keyboard.o resizer.o display.o $(RES)
+LINKOBJ  = main.o object.o keyboard.o resizer.o display.o $(RES)
+CLEANOBJ  =  main.o object.o keyboard.o resizer.o display.o cpp-kinematics_private.res cpp-kinematics.exe
 LIBS     =  -mwindows -lm -lfreeglut.dll -lopengl32 -lglu32 -lwinmm -lgdi32 -static
 INCS     =  
 CXXINCS  =  
@@ -37,6 +37,9 @@ keyboard.o: keyboard.cpp
 
 resizer.o: resizer.cpp
 	$(CPP) -c C:/kmazanek.gmail.com/Code/cpp-kinematics/resizer.cpp -o resizer.o $(CXXFLAGS) 
+
+display.o: display.cpp
+	$(CPP) -c C:/kmazanek.gmail.com/Code/cpp-kinematics/display.cpp -o display.o $(CXXFLAGS) 
 
 cpp-kinematics_private.res: cpp-kinematics_private.rc 
 	$(WINDRES) -i cpp-kinematics_private.rc --input-format=rc -o cpp-kinematics_private.res -O coff 
