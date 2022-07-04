@@ -1,7 +1,7 @@
 [Project]
 FileName = cpp-kinematics.dev
 Name = cpp-kinematics
-UnitCount = 11
+UnitCount = 13
 Type = 0
 Ver = 3
 ObjFiles = 
@@ -183,6 +183,30 @@ DetectEncoding = 1
 
 [Unit11]
 FileName = display.cpp
+CompileCpp = 1
+Folder = 
+Compile = 1
+Link = 1
+Priority = 1000
+OverrideBuildCmd = 0
+BuildCmd = 
+DetectEncoding = 1
+
+
+[Unit12]
+FileName = printer.h
+CompileCpp = 0
+Folder = 
+Compile = 0
+Link = 0
+Priority = 1000
+OverrideBuildCmd = 0
+BuildCmd = 
+DetectEncoding = 1
+
+
+[Unit13]
+FileName = printer.cpp
 CompileCpp = 1
 Folder = 
 Compile = 1

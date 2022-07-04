@@ -8,10 +8,12 @@
 #include "keyboard.h"
 #include "resizer.h"
 #include "display.h"
+#include "printer.h"
 
 Keyboard *keyboardPtr;
 Resizer *resizerPtr;
 Display *displayPtr;
+Printer *printerPtr;
 int w=1000,h=700;
 void
 output(int x, int y, char *string);
@@ -32,12 +34,12 @@ menu_select(int mode)
 {
   switch (mode) {
   case 1:
-  active=true;t=0;
- 
+	  active=true;
+	  timer.init();
   break;
   case 2:
-  active=false;  
-  
+	  active=false;
+	  t=0;
   break;
   }
 }
@@ -55,8 +57,11 @@ void ShowOldDisplay()
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glColor3d(1,0,0);
 	static char str[10];
-	if(active)t+=timer.GetElapsedSeconds();
-	
+	if(active)
+	{
+		t+=timer.GetElapsedSeconds();
+	}
+		
 	glBegin(GL_POINTS);
 	glColor3d(1,0,0);
 	
@@ -73,9 +78,9 @@ void ShowOldDisplay()
 	//glVertex2f(obj2.x,obj2.y);
 	glEnd();
 	
-	output(0, 30, gcvt(t,4,str));
-	output(0, 50, gcvt(obj1.y,4,str));
-	output(0, 70, gcvt(obj1.x,4,str));
+	printerPtr->output(0, 30, gcvt(t,4,str));
+	printerPtr->output(0, 50, gcvt(obj1.y,4,str));
+	printerPtr->output(0, 70, gcvt(obj1.x,4,str));
 	glutSwapBuffers();
 };
 
@@ -113,6 +118,8 @@ main(int argc, char *argv[])
 	resizerPtr = &resizer;
 	Display displayObj;
 	displayPtr = &displayObj;
+	Printer printer;
+	printerPtr = &printer;
     glutInit(&argc, argv);
     glutInitWindowSize(w,h);
     glutInitWindowPosition(0,0);
@@ -129,7 +136,7 @@ main(int argc, char *argv[])
   
     glClearColor(1,1,1,1);
     glPointSize(4);
-    timer.init();
+    //timer.init();
 
 	obj1.set_v(50000,500);
     obj2.set_a(0,1);
