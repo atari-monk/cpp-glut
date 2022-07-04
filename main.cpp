@@ -23,14 +23,12 @@ bool active=false;
 obj obj1(500,220,0);
 obj obj2(600,220,0);
 
-static void 
-resize(int width, int height)
+static void resize(int width, int height)
 {
 	resizerPtr->resize(width, height);
 }
 
-void
-menu_select(int mode)
+void menu_select(int mode)
 {
   switch (mode) {
   case 1:
@@ -67,7 +65,7 @@ void ShowOldDisplay()
 	glColor3d(1,0,0);
 	
 	obj1.getValues(t,8,0,0);
-	//obj2.getValues(t,2,0,0);
+	obj2.getValues(t,2,0,0);
 	
 	static float tabx[100],taby[100],t0=0;
 	static int i=0;
@@ -76,7 +74,7 @@ void ShowOldDisplay()
 		glVertex2f(tabx[a],taby[a]);
 	
 	glVertex2f(obj1.x,obj1.y);
-	//glVertex2f(obj2.x,obj2.y);
+	glVertex2f(obj2.x,obj2.y);
 	glEnd();
 	
 	printerPtr->output(0, 30, gcvt(t,4,str));
@@ -85,21 +83,17 @@ void ShowOldDisplay()
 	glutSwapBuffers();
 };
 
-static void 
-key(unsigned char key, int x, int y)
+static void key(unsigned char key, int x, int y)
 {
 	keyboardPtr->key(key, x, y);
 }
 
-static void 
-idle(void)
+static void idle(void)
 {
     glutPostRedisplay();
 }
 
-
-int 
-main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
 	Keyboard keyboard;
 	keyboardPtr = &keyboard;
@@ -109,16 +103,19 @@ main(int argc, char *argv[])
 	displayPtr = &displayObj;
 	Printer printer;
 	printerPtr = &printer;
-    glutInit(&argc, argv);
+    
+	glutInit(&argc, argv);
     glutInitWindowSize(w,h);
     glutInitWindowPosition(0,0);
     glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE);
     glutCreateWindow("Fizyka");
-    glutReshapeFunc(resize);
+    
+	glutReshapeFunc(resize);
     glutDisplayFunc(display);
     glutKeyboardFunc(key);
     glutIdleFunc(idle);
-    glutCreateMenu(menu_select);
+    
+	glutCreateMenu(menu_select);
     glutAddMenuEntry("Start",1);
     glutAddMenuEntry("Stop",2);
     glutAttachMenu(GLUT_RIGHT_BUTTON);
