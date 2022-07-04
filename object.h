@@ -1,6 +1,3 @@
-/*
-cel: dane i metody cia³a fizycznego
-*/
 class obj
 {
 public:
@@ -14,7 +11,6 @@ float ax0,ay0,vx0,vy0;
 
 float x,y,z;
 float ax,ay,vx,vy;
-
 
 void setPosition(float a,float b,float c);
 void set_a(float x,float y);

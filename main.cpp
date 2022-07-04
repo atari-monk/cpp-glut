@@ -4,43 +4,32 @@
 #include <stdlib.h>
 #include <string.h>
 #include "timer.h"
-#include "object.h"
+//#include "object.h"
 #include "keyboard.h"
 #include "resizer.h"
 #include "display.h"
 #include "printer.h"
+#include "data.h"
+#include "menu.h"
 
 Keyboard *keyboardPtr;
 Resizer *resizerPtr;
 Display *displayPtr;
 Printer *printerPtr;
+Menu *menuPtr;
+Timer *timerPtr;
+Data *dataPtr;
+
 int w=1000,h=700;
-void
-output(int x, int y, char *string);
-Timer timer;
-float t;
-bool active=false;
-obj obj1(500,220,0);
-obj obj2(600,220,0);
 
 static void resize(int width, int height)
 {
 	resizerPtr->resize(width, height);
 }
 
-void menu_select(int mode)
+static void menuSelect(int mode)
 {
-  switch (mode) {
-  case 1:
-	  active=true;
-	  timer.start();
-  break;
-  case 2:
-	  timer.stop();
-	  active=false;
-	  t=0;
-  break;
-  }
+	menuPtr->menuSelect(mode);
 }
 
 void ShowOldDisplay();
@@ -56,30 +45,30 @@ void ShowOldDisplay()
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glColor3d(1,0,0);
 	static char str[10];
-	if(active)
+	if(dataPtr->active)
 	{
-		t=timer.getElapsedTimeInSec();
+		dataPtr->t=timerPtr->getElapsedTimeInSec();
 	}
 		
 	glBegin(GL_POINTS);
 	glColor3d(1,0,0);
 	
-	obj1.getValues(t,8,0,0);
-	obj2.getValues(t,2,0,0);
+	dataPtr->obj2->getValues(dataPtr->t,2,0,0);
+	dataPtr->obj1->getValues(dataPtr->t,8,0,0);
 	
 	static float tabx[100],taby[100],t0=0;
 	static int i=0;
-	if(((t-t0) >= .4) && i<100){tabx[i]=obj1.x;taby[i]=obj1.y;i++;t0=t;}
+	if(((dataPtr->t-t0) >= .4) && i<100){tabx[i]=dataPtr->obj1->x;taby[i]=dataPtr->obj1->y;i++;t0=dataPtr->t;}
 	for(int a=0;a<i;a++)
 		glVertex2f(tabx[a],taby[a]);
 	
-	glVertex2f(obj1.x,obj1.y);
-	glVertex2f(obj2.x,obj2.y);
+	glVertex2f(dataPtr->obj1->x,dataPtr->obj1->y);
+	glVertex2f(dataPtr->obj2->x,dataPtr->obj2->y);
 	glEnd();
 	
-	printerPtr->output(0, 30, gcvt(t,4,str));
-	printerPtr->output(0, 50, gcvt(obj1.y,4,str));
-	printerPtr->output(0, 70, gcvt(obj1.x,4,str));
+	printerPtr->output(0, 30, gcvt(dataPtr->t,4,str));
+	printerPtr->output(0, 50, gcvt(dataPtr->obj1->y,4,str));
+	printerPtr->output(0, 70, gcvt(dataPtr->obj1->x,4,str));
 	glutSwapBuffers();
 };
 
@@ -103,29 +92,34 @@ int main(int argc, char *argv[])
 	displayPtr = &displayObj;
 	Printer printer;
 	printerPtr = &printer;
-    
+	Timer timer;
+	timerPtr = &timer;
+	Data data;
+	dataPtr = &data;
+	menuPtr = new Menu(&timer, &data);
+	
 	glutInit(&argc, argv);
     glutInitWindowSize(w,h);
     glutInitWindowPosition(0,0);
     glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE);
     glutCreateWindow("Fizyka");
-    
+    glutCreateMenu(menuSelect);
+	menuPtr->addMenu();
+	
 	glutReshapeFunc(resize);
     glutDisplayFunc(display);
     glutKeyboardFunc(key);
     glutIdleFunc(idle);
-    
-	glutCreateMenu(menu_select);
-    glutAddMenuEntry("Start",1);
-    glutAddMenuEntry("Stop",2);
-    glutAttachMenu(GLUT_RIGHT_BUTTON);
   
     glClearColor(1,1,1,1);
     glPointSize(4);
 
-	obj1.set_v(50000,500);
-    obj2.set_a(0,1);
+	dataPtr->obj1->set_v(50000,500);
+	dataPtr->obj2->set_v(0,0);
+    dataPtr->obj2->set_a(0,1);
     glutMainLoop();
-
+	
+	delete menuPtr;
+	
     return EXIT_SUCCESS;
 }
