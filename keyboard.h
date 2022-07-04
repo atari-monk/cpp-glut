@@ -3,7 +3,6 @@
 
 class Keyboard {
 public:
-	Keyboard();
 	void key(unsigned char key, int x, int y);
 };
 

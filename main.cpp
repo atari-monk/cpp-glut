@@ -3,15 +3,17 @@
 #include <GL/glu.h>
 #include <stdlib.h>
 #include <string.h>
-#include "HiResTimer.h"
+#include "hirestimer.h"
 #include "object.h"
 #include "keyboard.h"
+#include "resizer.h"
 
 Keyboard *keyboardPtr;
+Resizer *resizerPtr;
 int w=1000,h=700;
 void
 output(int x, int y, char *string);
-CHiResTimer timer;
+HiResTimer timer;
 float t;
 bool active=false;
 obj obj1(500,220,0);
@@ -20,11 +22,7 @@ obj obj2(600,220,0);
 static void 
 resize(int width, int height)
 {
-    glViewport(0, 0, width, height);
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    gluOrtho2D(0, width, height, 0);
-    glMatrixMode(GL_MODELVIEW);
+	resizerPtr->resize(width, height);
 }
 
 void
@@ -103,6 +101,8 @@ main(int argc, char *argv[])
 {
 	Keyboard keyboard;
 	keyboardPtr = &keyboard;
+	Resizer resizer;
+	resizerPtr = &resizer;
     glutInit(&argc, argv);
     glutInitWindowSize(w,h);
     glutInitWindowPosition(0,0);

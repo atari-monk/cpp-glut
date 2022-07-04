@@ -3,12 +3,9 @@
 
 #include <windows.h>
 
-class CHiResTimer
+class HiResTimer
 {
 public:
-	CHiResTimer() {}
-	~CHiResTimer() {}
-	
 	bool init()
 	{
 		if (QueryPerformanceFrequency(&ticksPerSecond) == false)
