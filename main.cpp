@@ -53,10 +53,11 @@ void ShowOldDisplay()
 	glBegin(GL_POINTS);
 	glColor3d(1,0,0);
 	
-	dataPtr->obj2->getValues(dataPtr->t,2,0,0);
-	dataPtr->obj1->getValues(dataPtr->t,8,0,0);
+	int sel = 2;
+	dataPtr->obj1->getValues(dataPtr->t,sel,0,0);
+	dataPtr->obj2->getValues(dataPtr->t,sel,0,0);
 	
-	static float tabx[100],taby[100],t0=0;
+	static double tabx[100],taby[100],t0=0;
 	static int i=0;
 	if(((dataPtr->t-t0) >= .4) && i<100){tabx[i]=dataPtr->obj1->x;taby[i]=dataPtr->obj1->y;i++;t0=dataPtr->t;}
 	for(int a=0;a<i;a++)
@@ -114,9 +115,10 @@ int main(int argc, char *argv[])
     glClearColor(1,1,1,1);
     glPointSize(4);
 
-	dataPtr->obj1->set_v(50000,500);
-	dataPtr->obj2->set_v(0,0);
-    dataPtr->obj2->set_a(0,1);
+	//dataPtr->obj1->set_v(50000,500);
+	//dataPtr->obj2->set_v(50000,500);
+	dataPtr->obj1->set_a(1,1);
+    dataPtr->obj2->set_a(1,1);
     glutMainLoop();
 	
 	delete menuPtr;

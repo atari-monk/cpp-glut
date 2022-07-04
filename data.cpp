@@ -3,7 +3,7 @@
 Data::Data()
 {
 	obj1 = new obj(500,220,0);
-	obj2 = new obj(600,220,0);
+	obj2 = new obj(400,220,0);
 }
 
 Data::~Data()
