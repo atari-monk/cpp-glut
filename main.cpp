@@ -3,7 +3,7 @@
 #include <GL/glu.h>
 #include <stdlib.h>
 #include <string.h>
-#include "hirestimer.h"
+#include "timer.h"
 #include "object.h"
 #include "keyboard.h"
 #include "resizer.h"
@@ -17,7 +17,7 @@ Printer *printerPtr;
 int w=1000,h=700;
 void
 output(int x, int y, char *string);
-HiResTimer timer;
+Timer timer;
 float t;
 bool active=false;
 obj obj1(500,220,0);
@@ -35,9 +35,10 @@ menu_select(int mode)
   switch (mode) {
   case 1:
 	  active=true;
-	  timer.init();
+	  timer.start();
   break;
   case 2:
+	  timer.stop();
 	  active=false;
 	  t=0;
   break;
@@ -59,7 +60,7 @@ void ShowOldDisplay()
 	static char str[10];
 	if(active)
 	{
-		t+=timer.GetElapsedSeconds();
+		t=timer.getElapsedTimeInSec();
 	}
 		
 	glBegin(GL_POINTS);

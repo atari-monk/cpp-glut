@@ -1,7 +1,7 @@
 [Project]
 FileName = cpp-kinematics.dev
 Name = cpp-kinematics
-UnitCount = 13
+UnitCount = 14
 Type = 0
 Ver = 3
 ObjFiles = 
@@ -98,11 +98,11 @@ DetectEncoding = 1
 
 
 [Unit4]
-FileName = hirestimer.h
+FileName = feature.txt
 CompileCpp = 1
-Folder = cpp-kinematics
-Compile = 1
-Link = 1
+Folder = Doc
+Compile = 0
+Link = 0
 Priority = 1000
 OverrideBuildCmd = 0
 BuildCmd = 
@@ -110,30 +110,6 @@ DetectEncoding = 1
 
 
 [Unit6]
-FileName = keyboard.h
-CompileCpp = 0
-Folder = 
-Compile = 0
-Link = 0
-Priority = 1000
-OverrideBuildCmd = 0
-BuildCmd = 
-DetectEncoding = 1
-
-
-[Unit5]
-FileName = feature.txt
-Folder = Doc
-Compile = 0
-Link = 0
-Priority = 1000
-OverrideBuildCmd = 0
-BuildCmd = 
-CompileCpp = 1
-DetectEncoding = 1
-
-
-[Unit7]
 FileName = keyboard.cpp
 CompileCpp = 1
 Folder = 
@@ -145,7 +121,19 @@ BuildCmd =
 DetectEncoding = 1
 
 
-[Unit8]
+[Unit5]
+FileName = keyboard.h
+Folder = 
+Compile = 0
+Link = 0
+Priority = 1000
+OverrideBuildCmd = 0
+BuildCmd = 
+CompileCpp = 0
+DetectEncoding = 1
+
+
+[Unit7]
 FileName = resizer.h
 CompileCpp = 0
 Folder = 
@@ -157,7 +145,7 @@ BuildCmd =
 DetectEncoding = 1
 
 
-[Unit9]
+[Unit8]
 FileName = resizer.cpp
 CompileCpp = 1
 Folder = 
@@ -169,7 +157,7 @@ BuildCmd =
 DetectEncoding = 1
 
 
-[Unit10]
+[Unit9]
 FileName = display.h
 CompileCpp = 0
 Folder = 
@@ -181,7 +169,7 @@ BuildCmd =
 DetectEncoding = 1
 
 
-[Unit11]
+[Unit10]
 FileName = display.cpp
 CompileCpp = 1
 Folder = 
@@ -193,7 +181,7 @@ BuildCmd =
 DetectEncoding = 1
 
 
-[Unit12]
+[Unit11]
 FileName = printer.h
 CompileCpp = 0
 Folder = 
@@ -205,8 +193,32 @@ BuildCmd =
 DetectEncoding = 1
 
 
-[Unit13]
+[Unit12]
 FileName = printer.cpp
+CompileCpp = 1
+Folder = 
+Compile = 1
+Link = 1
+Priority = 1000
+OverrideBuildCmd = 0
+BuildCmd = 
+DetectEncoding = 1
+
+
+[Unit13]
+FileName = timer.h
+CompileCpp = 0
+Folder = 
+Compile = 0
+Link = 0
+Priority = 1000
+OverrideBuildCmd = 0
+BuildCmd = 
+DetectEncoding = 1
+
+
+[Unit14]
+FileName = timer.cpp
 CompileCpp = 1
 Folder = 
 Compile = 1
