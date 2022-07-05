@@ -11,6 +11,7 @@
 #include "data.h"
 #include "menu.h"
 #include "dataprinter.h"
+#include "tracer.h"
 
 Keyboard *keyboardPtr;
 Resizer *resizerPtr;
@@ -20,6 +21,7 @@ Menu *menuPtr;
 Timer *timerPtr;
 Data *dataPtr;
 DataPrinter *dataprinterPtr;
+Tracer *tracerPtr;
 
 int w=1000,h=700;
 
@@ -57,11 +59,8 @@ void ShowOldDisplay()
 	dataPtr->obj1->getValues(dataPtr->t,sel,0,0);
 	dataPtr->obj2->getValues(dataPtr->t,sel,0,0);
 	
-	static double tabx[100],taby[100],t0=0;
-	static int i=0;
-	if(((dataPtr->t-t0) >= .4) && i<100){tabx[i]=dataPtr->obj1->x;taby[i]=dataPtr->obj1->y;i++;t0=dataPtr->t;}
-	for(int a=0;a<i;a++)
-		glVertex2f(tabx[a],taby[a]);
+	tracerPtr->Calculate();
+	tracerPtr->Draw();
 	
 	glVertex2f(dataPtr->obj1->x,dataPtr->obj1->y);
 	glVertex2f(dataPtr->obj2->x,dataPtr->obj2->y);
@@ -97,6 +96,7 @@ int main(int argc, char *argv[])
 	dataPtr = &data;
 	menuPtr = new Menu(&timer, &data);
 	dataprinterPtr = new DataPrinter(&printer, &data);
+	tracerPtr = new Tracer(&data);
 	
 	glutInit(&argc, argv);
     glutInitWindowSize(w,h);
@@ -122,5 +122,6 @@ int main(int argc, char *argv[])
 	
 	delete menuPtr;
 	delete dataprinterPtr;
+	delete tracerPtr;
     return EXIT_SUCCESS;
 }

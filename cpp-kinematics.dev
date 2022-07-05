@@ -1,7 +1,7 @@
 [Project]
 FileName = cpp-kinematics.dev
 Name = cpp-kinematics
-UnitCount = 20
+UnitCount = 22
 Type = 0
 Ver = 3
 ObjFiles = 
@@ -291,6 +291,30 @@ DetectEncoding = 1
 
 [Unit20]
 FileName = dataprinter.cpp
+CompileCpp = 1
+Folder = 
+Compile = 1
+Link = 1
+Priority = 1000
+OverrideBuildCmd = 0
+BuildCmd = 
+DetectEncoding = 1
+
+
+[Unit21]
+FileName = tracer.h
+CompileCpp = 0
+Folder = 
+Compile = 0
+Link = 0
+Priority = 1000
+OverrideBuildCmd = 0
+BuildCmd = 
+DetectEncoding = 1
+
+
+[Unit22]
+FileName = tracer.cpp
 CompileCpp = 1
 Folder = 
 Compile = 1
