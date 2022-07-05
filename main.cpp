@@ -4,13 +4,13 @@
 #include <stdlib.h>
 #include <string.h>
 #include "timer.h"
-//#include "object.h"
 #include "keyboard.h"
 #include "resizer.h"
 #include "display.h"
 #include "printer.h"
 #include "data.h"
 #include "menu.h"
+#include "dataprinter.h"
 
 Keyboard *keyboardPtr;
 Resizer *resizerPtr;
@@ -19,6 +19,7 @@ Printer *printerPtr;
 Menu *menuPtr;
 Timer *timerPtr;
 Data *dataPtr;
+DataPrinter *dataprinterPtr;
 
 int w=1000,h=700;
 
@@ -44,7 +45,6 @@ void ShowOldDisplay()
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glColor3d(1,0,0);
-	static char str[10];
 	if(dataPtr->active)
 	{
 		dataPtr->t=timerPtr->getElapsedTimeInSec();
@@ -67,9 +67,7 @@ void ShowOldDisplay()
 	glVertex2f(dataPtr->obj2->x,dataPtr->obj2->y);
 	glEnd();
 	
-	printerPtr->output(0, 30, gcvt(dataPtr->t,4,str));
-	printerPtr->output(0, 50, gcvt(dataPtr->obj1->y,4,str));
-	printerPtr->output(0, 70, gcvt(dataPtr->obj1->x,4,str));
+	dataprinterPtr->output();
 	glutSwapBuffers();
 };
 
@@ -98,6 +96,7 @@ int main(int argc, char *argv[])
 	Data data;
 	dataPtr = &data;
 	menuPtr = new Menu(&timer, &data);
+	dataprinterPtr = new DataPrinter(&printer, &data);
 	
 	glutInit(&argc, argv);
     glutInitWindowSize(w,h);
@@ -117,11 +116,11 @@ int main(int argc, char *argv[])
 
 	//dataPtr->obj1->set_v(50000,500);
 	//dataPtr->obj2->set_v(50000,500);
-	dataPtr->obj1->set_a(1,1);
-    dataPtr->obj2->set_a(1,1);
+	dataPtr->obj1->set_a(1,5);
+    dataPtr->obj2->set_a(1,4);
     glutMainLoop();
 	
 	delete menuPtr;
-	
+	delete dataprinterPtr;
     return EXIT_SUCCESS;
 }

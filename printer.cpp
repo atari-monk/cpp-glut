@@ -9,3 +9,8 @@ void Printer::output(int x, int y, char *string)
 		glutBitmapCharacter(font, string[i]);
 	}
 }
+
+void Printer::output(int x, int y, double value, int numofdigits)
+{
+	output(x, y, gcvt(value, numofdigits, buffer));
+}
