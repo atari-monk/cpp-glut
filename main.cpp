@@ -35,40 +35,11 @@ static void menuSelect(int mode)
 	menuPtr->menuSelect(mode);
 }
 
-void ShowOldDisplay();
-
 static void display(void)
 {
-    ShowOldDisplay();
-	//displayPtr->display();
+	displayPtr->calculate();
+	displayPtr->display();
 }
-
-void ShowOldDisplay()
-{
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	glColor3d(1,0,0);
-	if(dataPtr->active)
-	{
-		dataPtr->t=timerPtr->getElapsedTimeInSec();
-	}
-		
-	glBegin(GL_POINTS);
-	glColor3d(1,0,0);
-	
-	int sel = 2;
-	dataPtr->obj1->getValues(dataPtr->t,sel,0,0);
-	dataPtr->obj2->getValues(dataPtr->t,sel,0,0);
-	
-	tracerPtr->Calculate();
-	tracerPtr->Draw();
-	
-	glVertex2f(dataPtr->obj1->x,dataPtr->obj1->y);
-	glVertex2f(dataPtr->obj2->x,dataPtr->obj2->y);
-	glEnd();
-	
-	dataprinterPtr->output();
-	glutSwapBuffers();
-};
 
 static void key(unsigned char key, int x, int y)
 {
@@ -80,14 +51,12 @@ static void idle(void)
     glutPostRedisplay();
 }
 
-int main(int argc, char *argv[])
+void SetupDI()
 {
 	Keyboard keyboard;
 	keyboardPtr = &keyboard;
 	Resizer resizer;
 	resizerPtr = &resizer;
-	Display displayObj;
-	displayPtr = &displayObj;
 	Printer printer;
 	printerPtr = &printer;
 	Timer timer;
@@ -97,20 +66,67 @@ int main(int argc, char *argv[])
 	menuPtr = new Menu(&timer, &data);
 	dataprinterPtr = new DataPrinter(&printer, &data);
 	tracerPtr = new Tracer(&data);
-	
+	displayPtr = new Display(&timer, &data, tracerPtr, dataprinterPtr);
+};
+
+void SetupWindow(int argc, char *argv[])
+{
 	glutInit(&argc, argv);
-    glutInitWindowSize(w,h);
-    glutInitWindowPosition(0,0);
-    glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE);
-    glutCreateWindow("Fizyka");
-    glutCreateMenu(menuSelect);
+	glutInitWindowSize(w,h);
+	glutInitWindowPosition(0,0);
+	glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE);
+	glutCreateWindow("Fizyka");
+}
+
+void SetupMenu()
+{
+	glutCreateMenu(menuSelect);
 	menuPtr->addMenu();
-	
+}
+
+void SetupGlutCallbacks()
+{
 	glutReshapeFunc(resize);
-    glutDisplayFunc(display);
-    glutKeyboardFunc(key);
-    glutIdleFunc(idle);
-  
+	glutDisplayFunc(display);
+	glutKeyboardFunc(key);
+	glutIdleFunc(idle);
+}
+
+void Clean()
+{
+	delete menuPtr;
+	delete dataprinterPtr;
+	delete tracerPtr;
+}
+
+int main(int argc, char *argv[])
+{
+	Keyboard keyboard;
+	keyboardPtr = &keyboard;
+	Resizer resizer;
+	resizerPtr = &resizer;
+	Printer printer;
+	printerPtr = &printer;
+	Timer timer;
+	timerPtr = &timer;
+	Data data;
+	dataPtr = &data;
+	menuPtr = new Menu(&timer, &data);
+	dataprinterPtr = new DataPrinter(&printer, &data);
+	tracerPtr = new Tracer(&data);
+	displayPtr = new Display(&timer, &data, tracerPtr, dataprinterPtr);
+	glutInit(&argc, argv);
+	glutInitWindowSize(w,h);
+	glutInitWindowPosition(0,0);
+	glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE);
+	glutCreateWindow("Fizyka");
+	glutCreateMenu(menuSelect);
+	menuPtr->addMenu();
+    glutReshapeFunc(resize);
+	glutDisplayFunc(display);
+	glutKeyboardFunc(key);
+	glutIdleFunc(idle);
+	
     glClearColor(1,1,1,1);
     glPointSize(4);
 
@@ -120,8 +136,7 @@ int main(int argc, char *argv[])
     dataPtr->obj2->set_a(1,4);
     glutMainLoop();
 	
-	delete menuPtr;
-	delete dataprinterPtr;
-	delete tracerPtr;
+	Clean();
+	
     return EXIT_SUCCESS;
 }
