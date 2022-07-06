@@ -26,7 +26,7 @@ clean: clean-custom
 $(BIN): $(OBJ)
 	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
 
-main.o: main.cpp dataprinter.h keyboard.h display.h resizer.h object.h printer.h timer.h menu.h data.h tracer.h
+main.o: main.cpp keyboard.h printer.h timer.h display.h dataprinter.h object.h menu.h tracer.h resizer.h data.h
 	$(CPP) -c C:/kmazanek.gmail.com/Code/cpp-kinematics/main.cpp -o main.o $(CXXFLAGS) 
 
 object.o: object.cpp object.h
@@ -38,7 +38,7 @@ keyboard.o: keyboard.cpp keyboard.h
 resizer.o: resizer.cpp resizer.h
 	$(CPP) -c C:/kmazanek.gmail.com/Code/cpp-kinematics/resizer.cpp -o resizer.o $(CXXFLAGS) 
 
-display.o: display.cpp dataprinter.h display.h object.h printer.h timer.h data.h tracer.h
+display.o: display.cpp printer.h timer.h display.h dataprinter.h object.h tracer.h data.h
 	$(CPP) -c C:/kmazanek.gmail.com/Code/cpp-kinematics/display.cpp -o display.o $(CXXFLAGS) 
 
 printer.o: printer.cpp printer.h
@@ -47,16 +47,16 @@ printer.o: printer.cpp printer.h
 timer.o: timer.cpp timer.h
 	$(CPP) -c C:/kmazanek.gmail.com/Code/cpp-kinematics/timer.cpp -o timer.o $(CXXFLAGS) 
 
-menu.o: menu.cpp object.h timer.h menu.h data.h
+menu.o: menu.cpp timer.h object.h menu.h data.h
 	$(CPP) -c C:/kmazanek.gmail.com/Code/cpp-kinematics/menu.cpp -o menu.o $(CXXFLAGS) 
 
-data.o: data.cpp data.h object.h
+data.o: data.cpp object.h data.h
 	$(CPP) -c C:/kmazanek.gmail.com/Code/cpp-kinematics/data.cpp -o data.o $(CXXFLAGS) 
 
-dataprinter.o: dataprinter.cpp dataprinter.h object.h printer.h data.h
+dataprinter.o: dataprinter.cpp printer.h dataprinter.h object.h data.h
 	$(CPP) -c C:/kmazanek.gmail.com/Code/cpp-kinematics/dataprinter.cpp -o dataprinter.o $(CXXFLAGS) 
 
-tracer.o: tracer.cpp object.h data.h tracer.h
+tracer.o: tracer.cpp object.h tracer.h data.h
 	$(CPP) -c C:/kmazanek.gmail.com/Code/cpp-kinematics/tracer.cpp -o tracer.o $(CXXFLAGS) 
 
 cpp-kinematics_private.res: cpp-kinematics_private.rc 

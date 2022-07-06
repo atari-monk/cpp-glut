@@ -11,8 +11,7 @@ public:
 	obj *obj2;
 	Data();
 	~Data();
-private:
-
+	void setup();
 };
 
 #endif

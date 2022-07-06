@@ -32,3 +32,9 @@ void Display::display()
 	
 	glutSwapBuffers();
 }
+
+void Display::setup()
+{
+	glClearColor(1,1,1,1);
+	glPointSize(4);
+}

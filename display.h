@@ -35,6 +35,7 @@ public:
 			throw std::invalid_argument("service must not be null");
 		}
 	}
+	void setup();
 	void calculate();
 	void display();
 };

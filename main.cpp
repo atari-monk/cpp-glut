@@ -23,7 +23,7 @@ Data *dataPtr;
 DataPrinter *dataprinterPtr;
 Tracer *tracerPtr;
 
-int w=1000,h=700;
+int w=1920,h=1080;
 
 static void resize(int width, int height)
 {
@@ -53,20 +53,15 @@ static void idle(void)
 
 void SetupDI()
 {
-	Keyboard keyboard;
-	keyboardPtr = &keyboard;
-	Resizer resizer;
-	resizerPtr = &resizer;
-	Printer printer;
-	printerPtr = &printer;
-	Timer timer;
-	timerPtr = &timer;
-	Data data;
-	dataPtr = &data;
-	menuPtr = new Menu(&timer, &data);
-	dataprinterPtr = new DataPrinter(&printer, &data);
-	tracerPtr = new Tracer(&data);
-	displayPtr = new Display(&timer, &data, tracerPtr, dataprinterPtr);
+	keyboardPtr = new Keyboard();
+	resizerPtr = new Resizer();
+	printerPtr = new Printer();
+	timerPtr = new Timer();
+	dataPtr = new Data();
+	menuPtr = new Menu(timerPtr, dataPtr);
+	dataprinterPtr = new DataPrinter(printerPtr, dataPtr);
+	tracerPtr = new Tracer(dataPtr);
+	displayPtr = new Display(timerPtr, dataPtr, tracerPtr, dataprinterPtr);
 };
 
 void SetupWindow(int argc, char *argv[])
@@ -94,49 +89,26 @@ void SetupGlutCallbacks()
 
 void Clean()
 {
+	delete keyboardPtr;
+	delete resizerPtr;
+	delete printerPtr;
+	delete timerPtr;
+	delete dataPtr;
 	delete menuPtr;
 	delete dataprinterPtr;
 	delete tracerPtr;
+	delete displayPtr;
 }
 
 int main(int argc, char *argv[])
 {
-	Keyboard keyboard;
-	keyboardPtr = &keyboard;
-	Resizer resizer;
-	resizerPtr = &resizer;
-	Printer printer;
-	printerPtr = &printer;
-	Timer timer;
-	timerPtr = &timer;
-	Data data;
-	dataPtr = &data;
-	menuPtr = new Menu(&timer, &data);
-	dataprinterPtr = new DataPrinter(&printer, &data);
-	tracerPtr = new Tracer(&data);
-	displayPtr = new Display(&timer, &data, tracerPtr, dataprinterPtr);
-	glutInit(&argc, argv);
-	glutInitWindowSize(w,h);
-	glutInitWindowPosition(0,0);
-	glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE);
-	glutCreateWindow("Fizyka");
-	glutCreateMenu(menuSelect);
-	menuPtr->addMenu();
-    glutReshapeFunc(resize);
-	glutDisplayFunc(display);
-	glutKeyboardFunc(key);
-	glutIdleFunc(idle);
-	
-    glClearColor(1,1,1,1);
-    glPointSize(4);
-
-	//dataPtr->obj1->set_v(50000,500);
-	//dataPtr->obj2->set_v(50000,500);
-	dataPtr->obj1->set_a(1,5);
-    dataPtr->obj2->set_a(1,4);
+	SetupDI();
+	SetupWindow(argc, argv);
+	SetupMenu();
+	SetupGlutCallbacks();
+    displayPtr->setup();
+	dataPtr->setup();
     glutMainLoop();
-	
 	Clean();
-	
     return EXIT_SUCCESS;
 }
