@@ -3,6 +3,7 @@
 
 #include "keyboard.h"
 #include "resizer.h"
+#include "framecomputer.h"
 #include "display.h"
 #include "printer.h"
 #include "menu.h"
@@ -15,6 +16,7 @@ class Model {
 public:
 	Keyboard *keyboard;
 	Resizer *resizer;
+	FrameComputer *framecomputer; 
 	Display *display;
 	Printer *printer;
 	Menu *menu;

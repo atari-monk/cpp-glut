@@ -21,7 +21,7 @@ static void resize(int width, int height)
 
 static void display()
 {
-	model->display->calculate();
+	model->framecomputer->Compute();
 	model->display->display();
 }
 

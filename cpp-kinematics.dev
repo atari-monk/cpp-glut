@@ -1,7 +1,7 @@
 [Project]
 FileName = cpp-kinematics.dev
 Name = cpp-kinematics
-UnitCount = 26
+UnitCount = 28
 Type = 0
 Ver = 3
 ObjFiles = 
@@ -363,6 +363,30 @@ DetectEncoding = 1
 
 [Unit26]
 FileName = glutapp.cpp
+CompileCpp = 1
+Folder = 
+Compile = 1
+Link = 1
+Priority = 1000
+OverrideBuildCmd = 0
+BuildCmd = 
+DetectEncoding = 1
+
+
+[Unit27]
+FileName = framecomputer.h
+CompileCpp = 0
+Folder = 
+Compile = 0
+Link = 0
+Priority = 1000
+OverrideBuildCmd = 0
+BuildCmd = 
+DetectEncoding = 1
+
+
+[Unit28]
+FileName = framecomputer.cpp
 CompileCpp = 1
 Folder = 
 Compile = 1
