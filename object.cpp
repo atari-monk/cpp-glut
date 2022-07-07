@@ -1,29 +1,35 @@
 #include "object.h"
 #include "math.h"
+
 obj::obj(double a,double b,double c)
 {
 	setPosition(a,b,c);     
 }
+
 obj::~obj()
 {   
 }
+
 void obj::setPosition(double a,double b,double c)
 {
 	x0=a;
 	y0=b;
 	z0=c;    
 }
+
 void obj::set_a(double x,double y)
 {
 	ax=x;
 	ay=y;     
 }
+
 void obj::set_v(double x,double y)
 {
 	vx=x;
 	vy=y;     
 }
-void obj::getValues(double t,int s,double x1,double y1)
+
+void obj::getValues(double t, int s, double x1, double y1)
 {
 	switch(s)
 	{

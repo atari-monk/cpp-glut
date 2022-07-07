@@ -4,20 +4,22 @@
 #include <stdlib.h>
 #include <string.h>
 #include "model.h"
+#include "glutapp.h"
 
 Model *model;
-
-static void resize(int width, int height)
-{
-	model->resizer->resize(width, height);
-}
+GlutApp *glutApp;
 
 static void menuSelect(int mode)
 {
 	model->menu->menuSelect(mode);
 }
 
-static void display(void)
+static void resize(int width, int height)
+{
+	model->resizer->resize(width, height);
+}
+
+static void display()
 {
 	model->display->calculate();
 	model->display->display();
@@ -28,55 +30,33 @@ static void key(unsigned char key, int x, int y)
 	model->keyboard->key(key, x, y);
 }
 
-static void idle(void)
+static void idle()
 {
     glutPostRedisplay();
 }
 
-void SetupModel()
-{
-	model = new Model();
-	model->Setup();
-};
-
-void SetupWindow(int argc, char *argv[])
-{
-	glutInit(&argc, argv);
-	glutInitWindowSize(1920, 1080);
-	glutInitWindowPosition(0, 0);
-	glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE);
-	glutCreateWindow("Fizyka");
-}
-
-void SetupMenu()
-{
-	glutCreateMenu(menuSelect);
-	model->menu->addMenu();
-}
-
 void SetupGlutCallbacks()
 {
+	glutCreateMenu(menuSelect);
 	glutReshapeFunc(resize);
 	glutDisplayFunc(display);
 	glutKeyboardFunc(key);
 	glutIdleFunc(idle);
 }
 
-void Clean()
-{
-	model->Clean();
-	delete model;
-}
-
 int main(int argc, char *argv[])
 {
-	SetupModel();
-	SetupWindow(argc, argv);
-	SetupMenu();
+	model = new Model();
+	glutApp = new GlutApp(model);
+	
+	glutApp->setup(argc, argv);
 	SetupGlutCallbacks();
-    model->display->setup();
-	model->data->setup();
-    glutMainLoop();
-	Clean();
+	glutApp->setup();
+	glutApp->run();
+	glutApp->clean();
+	
+	delete model;
+	delete glutApp;
+	
     return EXIT_SUCCESS;
 }
