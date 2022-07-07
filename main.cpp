@@ -3,47 +3,29 @@
 #include <GL/glu.h>
 #include <stdlib.h>
 #include <string.h>
-#include "timer.h"
-#include "keyboard.h"
-#include "resizer.h"
-#include "display.h"
-#include "printer.h"
-#include "data.h"
-#include "menu.h"
-#include "dataprinter.h"
-#include "tracer.h"
+#include "model.h"
 
-Keyboard *keyboardPtr;
-Resizer *resizerPtr;
-Display *displayPtr;
-Printer *printerPtr;
-Menu *menuPtr;
-Timer *timerPtr;
-Data *dataPtr;
-DataPrinter *dataprinterPtr;
-Tracer *tracerPtr;
-
-int w=1920,h=1080;
+Model *model;
 
 static void resize(int width, int height)
 {
-	resizerPtr->resize(width, height);
+	model->resizer->resize(width, height);
 }
 
 static void menuSelect(int mode)
 {
-	menuPtr->menuSelect(mode);
+	model->menu->menuSelect(mode);
 }
 
 static void display(void)
 {
-	displayPtr->calculate();
-	displayPtr->display();
+	model->display->calculate();
+	model->display->display();
 }
 
 static void key(unsigned char key, int x, int y)
 {
-	keyboardPtr->key(key, x, y);
+	model->keyboard->key(key, x, y);
 }
 
 static void idle(void)
@@ -51,24 +33,17 @@ static void idle(void)
     glutPostRedisplay();
 }
 
-void SetupDI()
+void SetupModel()
 {
-	keyboardPtr = new Keyboard();
-	resizerPtr = new Resizer();
-	printerPtr = new Printer();
-	timerPtr = new Timer();
-	dataPtr = new Data();
-	menuPtr = new Menu(timerPtr, dataPtr);
-	dataprinterPtr = new DataPrinter(printerPtr, dataPtr);
-	tracerPtr = new Tracer(dataPtr);
-	displayPtr = new Display(timerPtr, dataPtr, tracerPtr, dataprinterPtr);
+	model = new Model();
+	model->Setup();
 };
 
 void SetupWindow(int argc, char *argv[])
 {
 	glutInit(&argc, argv);
-	glutInitWindowSize(w,h);
-	glutInitWindowPosition(0,0);
+	glutInitWindowSize(1920, 1080);
+	glutInitWindowPosition(0, 0);
 	glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE);
 	glutCreateWindow("Fizyka");
 }
@@ -76,7 +51,7 @@ void SetupWindow(int argc, char *argv[])
 void SetupMenu()
 {
 	glutCreateMenu(menuSelect);
-	menuPtr->addMenu();
+	model->menu->addMenu();
 }
 
 void SetupGlutCallbacks()
@@ -89,25 +64,18 @@ void SetupGlutCallbacks()
 
 void Clean()
 {
-	delete keyboardPtr;
-	delete resizerPtr;
-	delete printerPtr;
-	delete timerPtr;
-	delete dataPtr;
-	delete menuPtr;
-	delete dataprinterPtr;
-	delete tracerPtr;
-	delete displayPtr;
+	model->Clean();
+	delete model;
 }
 
 int main(int argc, char *argv[])
 {
-	SetupDI();
+	SetupModel();
 	SetupWindow(argc, argv);
 	SetupMenu();
 	SetupGlutCallbacks();
-    displayPtr->setup();
-	dataPtr->setup();
+    model->display->setup();
+	model->data->setup();
     glutMainLoop();
 	Clean();
     return EXIT_SUCCESS;

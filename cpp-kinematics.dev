@@ -1,7 +1,7 @@
 [Project]
 FileName = cpp-kinematics.dev
 Name = cpp-kinematics
-UnitCount = 22
+UnitCount = 24
 Type = 0
 Ver = 3
 ObjFiles = 
@@ -315,6 +315,30 @@ DetectEncoding = 1
 
 [Unit22]
 FileName = tracer.cpp
+CompileCpp = 1
+Folder = 
+Compile = 1
+Link = 1
+Priority = 1000
+OverrideBuildCmd = 0
+BuildCmd = 
+DetectEncoding = 1
+
+
+[Unit23]
+FileName = model.h
+CompileCpp = 0
+Folder = 
+Compile = 0
+Link = 0
+Priority = 1000
+OverrideBuildCmd = 0
+BuildCmd = 
+DetectEncoding = 1
+
+
+[Unit24]
+FileName = model.cpp
 CompileCpp = 1
 Folder = 
 Compile = 1

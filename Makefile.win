@@ -5,9 +5,9 @@ CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
 RES      = cpp-kinematics_private.res
-OBJ      = main.o object.o keyboard.o resizer.o display.o printer.o timer.o menu.o data.o dataprinter.o tracer.o $(RES)
-LINKOBJ  = main.o object.o keyboard.o resizer.o display.o printer.o timer.o menu.o data.o dataprinter.o tracer.o $(RES)
-CLEANOBJ  =  main.o object.o keyboard.o resizer.o display.o printer.o timer.o menu.o data.o dataprinter.o tracer.o cpp-kinematics_private.res cpp-kinematics.exe
+OBJ      = main.o object.o keyboard.o resizer.o display.o printer.o timer.o menu.o data.o dataprinter.o tracer.o model.o $(RES)
+LINKOBJ  = main.o object.o keyboard.o resizer.o display.o printer.o timer.o menu.o data.o dataprinter.o tracer.o model.o $(RES)
+CLEANOBJ  =  main.o object.o keyboard.o resizer.o display.o printer.o timer.o menu.o data.o dataprinter.o tracer.o model.o cpp-kinematics_private.res cpp-kinematics.exe
 LIBS     =  -mwindows -lm -lfreeglut.dll -lopengl32 -lglu32 -lwinmm -lgdi32 -static
 INCS     =  
 CXXINCS  =  
@@ -26,7 +26,7 @@ clean: clean-custom
 $(BIN): $(OBJ)
 	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
 
-main.o: main.cpp keyboard.h printer.h timer.h display.h dataprinter.h object.h menu.h tracer.h resizer.h data.h
+main.o: main.cpp display.h resizer.h keyboard.h data.h menu.h object.h timer.h tracer.h dataprinter.h model.h printer.h
 	$(CPP) -c C:/kmazanek.gmail.com/Code/cpp-kinematics/main.cpp -o main.o $(CXXFLAGS) 
 
 object.o: object.cpp object.h
@@ -38,7 +38,7 @@ keyboard.o: keyboard.cpp keyboard.h
 resizer.o: resizer.cpp resizer.h
 	$(CPP) -c C:/kmazanek.gmail.com/Code/cpp-kinematics/resizer.cpp -o resizer.o $(CXXFLAGS) 
 
-display.o: display.cpp printer.h timer.h display.h dataprinter.h object.h tracer.h data.h
+display.o: display.cpp display.h data.h object.h timer.h tracer.h dataprinter.h printer.h
 	$(CPP) -c C:/kmazanek.gmail.com/Code/cpp-kinematics/display.cpp -o display.o $(CXXFLAGS) 
 
 printer.o: printer.cpp printer.h
@@ -47,17 +47,20 @@ printer.o: printer.cpp printer.h
 timer.o: timer.cpp timer.h
 	$(CPP) -c C:/kmazanek.gmail.com/Code/cpp-kinematics/timer.cpp -o timer.o $(CXXFLAGS) 
 
-menu.o: menu.cpp timer.h object.h menu.h data.h
+menu.o: menu.cpp data.h menu.h object.h timer.h
 	$(CPP) -c C:/kmazanek.gmail.com/Code/cpp-kinematics/menu.cpp -o menu.o $(CXXFLAGS) 
 
-data.o: data.cpp object.h data.h
+data.o: data.cpp data.h object.h
 	$(CPP) -c C:/kmazanek.gmail.com/Code/cpp-kinematics/data.cpp -o data.o $(CXXFLAGS) 
 
-dataprinter.o: dataprinter.cpp printer.h dataprinter.h object.h data.h
+dataprinter.o: dataprinter.cpp dataprinter.h printer.h
 	$(CPP) -c C:/kmazanek.gmail.com/Code/cpp-kinematics/dataprinter.cpp -o dataprinter.o $(CXXFLAGS) 
 
-tracer.o: tracer.cpp object.h tracer.h data.h
+tracer.o: tracer.cpp tracer.h
 	$(CPP) -c C:/kmazanek.gmail.com/Code/cpp-kinematics/tracer.cpp -o tracer.o $(CXXFLAGS) 
+
+model.o: model.cpp display.h resizer.h keyboard.h data.h menu.h object.h timer.h tracer.h dataprinter.h model.h printer.h
+	$(CPP) -c C:/kmazanek.gmail.com/Code/cpp-kinematics/model.cpp -o model.o $(CXXFLAGS) 
 
 cpp-kinematics_private.res: cpp-kinematics_private.rc 
 	$(WINDRES) -i cpp-kinematics_private.rc --input-format=rc -o cpp-kinematics_private.res -O coff 

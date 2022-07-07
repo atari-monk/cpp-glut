@@ -1,2 +1,5 @@
-[Editors]
-Order = 
+[Editor_23]
+CursorCol = 17
+CursorRow = 20
+TopLine = 1
+LeftChar = 1
