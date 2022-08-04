@@ -5,9 +5,9 @@ CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
 RES      = cpp-kinematics_private.res
-OBJ      = main.o object.o keyboard.o resizer.o display.o printer.o timer.o menu.o data.o dataprinter.o tracer.o model.o glutapp.o framecomputer.o objectcomputer.o $(RES)
-LINKOBJ  = main.o object.o keyboard.o resizer.o display.o printer.o timer.o menu.o data.o dataprinter.o tracer.o model.o glutapp.o framecomputer.o objectcomputer.o $(RES)
-CLEANOBJ  =  main.o object.o keyboard.o resizer.o display.o printer.o timer.o menu.o data.o dataprinter.o tracer.o model.o glutapp.o framecomputer.o objectcomputer.o cpp-kinematics_private.res cpp-kinematics.exe
+OBJ      = main.o object.o keyboard.o resizer.o display.o printer.o timer.o menu.o data.o dataprinter.o tracer.o model.o glutapp.o framecomputer.o $(RES)
+LINKOBJ  = main.o object.o keyboard.o resizer.o display.o printer.o timer.o menu.o data.o dataprinter.o tracer.o model.o glutapp.o framecomputer.o $(RES)
+CLEANOBJ  =  main.o object.o keyboard.o resizer.o display.o printer.o timer.o menu.o data.o dataprinter.o tracer.o model.o glutapp.o framecomputer.o cpp-kinematics_private.res cpp-kinematics.exe
 LIBS     =  -mwindows -lm -lfreeglut.dll -lopengl32 -lglu32 -lwinmm -lgdi32
 INCS     =  
 CXXINCS  =  
@@ -67,9 +67,6 @@ glutapp.o: glutapp.cpp tracer.h model.h glutapp.h keyboard.h data.h display.h ob
 
 framecomputer.o: framecomputer.cpp tracer.h data.h object.h timer.h framecomputer.h
 	$(CPP) -c C:/kmazanek.gmail.com/Code/cpp-kinematics/framecomputer.cpp -o framecomputer.o $(CXXFLAGS) 
-
-objectcomputer.o: objectcomputer.cpp objectcomputer.h
-	$(CPP) -c C:/kmazanek.gmail.com/Code/cpp-kinematics/objectcomputer.cpp -o objectcomputer.o $(CXXFLAGS) 
 
 cpp-kinematics_private.res: cpp-kinematics_private.rc 
 	$(WINDRES) -i cpp-kinematics_private.rc --input-format=rc -o cpp-kinematics_private.res -O coff 
