@@ -29,7 +29,7 @@ void obj::set_v(double x,double y)
 	vy=y;     
 }
 
-void obj::getValues(double t, int s, double x1, double y1)
+void obj::getValues(double t, int s)
 {
 	switch(s)
 	{

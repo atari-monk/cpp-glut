@@ -5,17 +5,17 @@
 void Tracer::Calculate()
 {
 	if(data->t - t0 >= 0.6 
-		&& i < 100)
+		&& index < 100)
 	{
-		tabx[i] = data->obj1->x;
-		taby[i] = data->obj1->y;
-		i++;
+		tabx[index] = data->obj1->x;
+		taby[index] = data->obj1->y;
+		index++;
 		t0=data->t;
 	}
 }
 
 void Tracer::Draw()
 {
-	for(int a=0; a < i; a++)
+	for(int a=0; a < index; a++)
 		glVertex2f(tabx[a], taby[a]);
 }

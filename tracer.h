@@ -11,6 +11,7 @@ public:
 		if(data == nullptr){
 			throw std::invalid_argument("service must not be null");
 		}
+		index = 0;
 	}
 	void Calculate();
 	void Draw();
@@ -19,7 +20,7 @@ private:
 	double tabx[100];
 	double taby[100];
 	double t0;
-	int i;
+	int index;
 };
 
 #endif

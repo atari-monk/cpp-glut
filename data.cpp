@@ -14,8 +14,8 @@ Data::~Data()
 
 void Data::setup()
 {
-	//obj1->set_v(50000,500);
-	//obj2->set_v(50000,500);
-	obj1->set_a(1,5);
-	obj2->set_a(1,4);
+	obj1->set_v(0,10);
+	obj2->set_v(0,15);
+	//obj1->set_a(1,5);
+	//obj2->set_a(1,4);
 }

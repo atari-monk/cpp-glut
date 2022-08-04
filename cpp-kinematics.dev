@@ -1,7 +1,7 @@
 [Project]
 FileName = cpp-kinematics.dev
 Name = cpp-kinematics
-UnitCount = 28
+UnitCount = 30
 Type = 0
 Ver = 3
 ObjFiles = 
@@ -32,8 +32,8 @@ LogOutput =
 LogOutputEnabled = 0
 UsePrecompiledHeader = 0
 PrecompiledHeader = 
-CompilerSetType = 0
-StaticLink = 1
+CompilerSetType = 1
+StaticLink = 0
 AddCharset = 1
 ExecEncoding = SYSTEM
 Encoding = AUTO
@@ -397,10 +397,32 @@ BuildCmd =
 DetectEncoding = 1
 
 
+[Unit29]
+FileName = objectcomputer.h
+CompileCpp = 0
+Folder = 
+Compile = 0
+Link = 0
+Priority = 1000
+OverrideBuildCmd = 0
+BuildCmd = 
+DetectEncoding = 1
+
+
+[Unit30]
+FileName = objectcomputer.cpp
+CompileCpp = 1
+Folder = 
+Compile = 1
+Link = 1
+Priority = 1000
+OverrideBuildCmd = 0
+BuildCmd = 
+DetectEncoding = 1
+
+
 [CompilerSettings]
 cc_cmd_opt_debug_info = on
-cc_cmd_opt_optimize = 2
 cc_cmd_opt_use_pipe = on
 cc_cmd_opt_warning_all = on
 cc_cmd_opt_warning_extra = on
-link_cmd_opt_strip_exe = 

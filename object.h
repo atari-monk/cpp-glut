@@ -16,5 +16,5 @@ public:
 	void set_a(double x,double y);
 	void set_v(double x,double y);
 	void reset();
-	void getValues(double t,int s,double x1,double y1);
+	void getValues(double t,int s);
 };
