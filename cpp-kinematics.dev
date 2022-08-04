@@ -1,7 +1,7 @@
 [Project]
 FileName = cpp-kinematics.dev
 Name = cpp-kinematics
-UnitCount = 28
+UnitCount = 27
 Type = 0
 Ver = 3
 ObjFiles = 
@@ -32,7 +32,7 @@ LogOutput =
 LogOutputEnabled = 0
 UsePrecompiledHeader = 0
 PrecompiledHeader = 
-CompilerSetType = 1
+CompilerSetType = 0
 StaticLink = 0
 AddCharset = 1
 ExecEncoding = SYSTEM
@@ -98,9 +98,9 @@ DetectEncoding = 1
 
 
 [Unit4]
-FileName = feature.txt
-CompileCpp = 1
-Folder = Doc
+FileName = keyboard.h
+CompileCpp = 0
+Folder = 
 Compile = 0
 Link = 0
 Priority = 1000
@@ -110,30 +110,6 @@ DetectEncoding = 1
 
 
 [Unit6]
-FileName = keyboard.cpp
-CompileCpp = 1
-Folder = 
-Compile = 1
-Link = 1
-Priority = 1000
-OverrideBuildCmd = 0
-BuildCmd = 
-DetectEncoding = 1
-
-
-[Unit5]
-FileName = keyboard.h
-Folder = 
-Compile = 0
-Link = 0
-Priority = 1000
-OverrideBuildCmd = 0
-BuildCmd = 
-CompileCpp = 0
-DetectEncoding = 1
-
-
-[Unit7]
 FileName = resizer.h
 CompileCpp = 0
 Folder = 
@@ -145,7 +121,19 @@ BuildCmd =
 DetectEncoding = 1
 
 
-[Unit8]
+[Unit5]
+FileName = keyboard.cpp
+Folder = 
+Compile = 1
+Link = 1
+Priority = 1000
+OverrideBuildCmd = 0
+BuildCmd = 
+CompileCpp = 1
+DetectEncoding = 1
+
+
+[Unit7]
 FileName = resizer.cpp
 CompileCpp = 1
 Folder = 
@@ -157,7 +145,7 @@ BuildCmd =
 DetectEncoding = 1
 
 
-[Unit9]
+[Unit8]
 FileName = display.h
 CompileCpp = 0
 Folder = 
@@ -169,7 +157,7 @@ BuildCmd =
 DetectEncoding = 1
 
 
-[Unit10]
+[Unit9]
 FileName = display.cpp
 CompileCpp = 1
 Folder = 
@@ -181,7 +169,7 @@ BuildCmd =
 DetectEncoding = 1
 
 
-[Unit11]
+[Unit10]
 FileName = printer.h
 CompileCpp = 0
 Folder = 
@@ -193,7 +181,7 @@ BuildCmd =
 DetectEncoding = 1
 
 
-[Unit12]
+[Unit11]
 FileName = printer.cpp
 CompileCpp = 1
 Folder = 
@@ -205,7 +193,7 @@ BuildCmd =
 DetectEncoding = 1
 
 
-[Unit13]
+[Unit12]
 FileName = timer.h
 CompileCpp = 0
 Folder = 
@@ -217,7 +205,7 @@ BuildCmd =
 DetectEncoding = 1
 
 
-[Unit14]
+[Unit13]
 FileName = timer.cpp
 CompileCpp = 1
 Folder = 
@@ -229,7 +217,7 @@ BuildCmd =
 DetectEncoding = 1
 
 
-[Unit15]
+[Unit14]
 FileName = menu.h
 CompileCpp = 0
 Folder = 
@@ -241,7 +229,7 @@ BuildCmd =
 DetectEncoding = 1
 
 
-[Unit16]
+[Unit15]
 FileName = menu.cpp
 CompileCpp = 1
 Folder = 
@@ -253,7 +241,7 @@ BuildCmd =
 DetectEncoding = 1
 
 
-[Unit17]
+[Unit16]
 FileName = data.h
 CompileCpp = 0
 Folder = 
@@ -265,7 +253,7 @@ BuildCmd =
 DetectEncoding = 1
 
 
-[Unit18]
+[Unit17]
 FileName = data.cpp
 CompileCpp = 1
 Folder = 
@@ -277,7 +265,7 @@ BuildCmd =
 DetectEncoding = 1
 
 
-[Unit19]
+[Unit18]
 FileName = dataprinter.h
 CompileCpp = 0
 Folder = 
@@ -289,7 +277,7 @@ BuildCmd =
 DetectEncoding = 1
 
 
-[Unit20]
+[Unit19]
 FileName = dataprinter.cpp
 CompileCpp = 1
 Folder = 
@@ -301,7 +289,7 @@ BuildCmd =
 DetectEncoding = 1
 
 
-[Unit21]
+[Unit20]
 FileName = tracer.h
 CompileCpp = 0
 Folder = 
@@ -313,7 +301,7 @@ BuildCmd =
 DetectEncoding = 1
 
 
-[Unit22]
+[Unit21]
 FileName = tracer.cpp
 CompileCpp = 1
 Folder = 
@@ -325,7 +313,7 @@ BuildCmd =
 DetectEncoding = 1
 
 
-[Unit23]
+[Unit22]
 FileName = model.h
 CompileCpp = 0
 Folder = 
@@ -337,7 +325,7 @@ BuildCmd =
 DetectEncoding = 1
 
 
-[Unit24]
+[Unit23]
 FileName = model.cpp
 CompileCpp = 1
 Folder = 
@@ -349,7 +337,7 @@ BuildCmd =
 DetectEncoding = 1
 
 
-[Unit25]
+[Unit24]
 FileName = glutapp.h
 CompileCpp = 0
 Folder = 
@@ -361,7 +349,7 @@ BuildCmd =
 DetectEncoding = 1
 
 
-[Unit26]
+[Unit25]
 FileName = glutapp.cpp
 CompileCpp = 1
 Folder = 
@@ -373,12 +361,24 @@ BuildCmd =
 DetectEncoding = 1
 
 
-[Unit27]
+[Unit26]
 FileName = framecomputer.h
 CompileCpp = 0
 Folder = 
 Compile = 0
 Link = 0
+Priority = 1000
+OverrideBuildCmd = 0
+BuildCmd = 
+DetectEncoding = 1
+
+
+[Unit27]
+FileName = framecomputer.cpp
+CompileCpp = 1
+Folder = 
+Compile = 1
+Link = 1
 Priority = 1000
 OverrideBuildCmd = 0
 BuildCmd = 

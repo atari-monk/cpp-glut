@@ -15,6 +15,7 @@ public:
 	}
 	void Calculate();
 	void Draw();
+	void Reset();
 private:
 	Data *data = nullptr;
 	double tabx[100];

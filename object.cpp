@@ -33,43 +33,51 @@ void obj::getValues(double t, int s)
 {
 	switch(s)
 	{
-		case 1://ruch jednostajny
+		case 1:
+		//constant speed
 		x=x0+vx*t;
 		y=y0+vy*t;
 		break;
-		case 2://ruch przyspieszony
-		vx=//vx0
-		ax*t;
-		vy=//vy0
-		ay*t; 
+		case 2:
+		//constant acceleration
+		vx=vx0+ax*t;
+		vy=vy0+ay*t; 
 		x=x0+vx*t;
 		y=y0+vy*t;
 		break;
-		case 3://ruch opuŸniony cialo osiagnie 300 w t->do nieskoñczonoœci
+		case 3:
+		//deceleration
 		x=x0;
-		y=y0+ (300*t)/(1+t);
+		y=y0 + (300*t)/(1+t);
 		break;
-		case 4://ruch opuŸniony 
-		vx=0;
-		if(1000-5*y>0){vy=sqrt(1000-5*y); 
+		case 4:
+		//deceleration
+		if(400-y>0)
+		{
+			vy=sqrt(400-y); 
 			x=x0+vx*t;
-			y=y0+vy*t;}
+			y=y0+vy*t;
+		}
 		break;
-		case 5://ruch 
-		x=x0;
-		y=y0+ 100*sin(0.5*3.14*(2*t-t*t*t));
+		case 5:
+		//movement 
+		x=x0 + 5*sin(0.7*3.14*(t-t*t));
+		y=y0 + 10*sin(0.1*3.14*(t-t*t));
 		break;
-		case 6://ruch 
-		x=x0;
-		y=y0+ 60*t-t*t*t;
+		case 6:
+		//movement 
+		x=x0+ 12*t-t*t;
+		y=y0+ 24*t-t*t;
 		break;
-		case 7://rzut ukosny
-		vx=6;
-		vy=-(30-2*t); 
+		case 7:
+		//Projectile motion
+		vx=25;
+		vy=-(40-2*t); 
 		x=x0+vx*t;
 		y=y0+vy*t;
 		break;
-		case 8://rzut poziomy
+		case 8:
+		//Horizontal projection
 		vx=46;
 		vy=9*t; 
 		x=x0+vx*t;

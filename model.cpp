@@ -7,9 +7,9 @@ void Model::Setup()
 	printer = new Printer();
 	timer = new Timer();
 	data = new Data();
-	menu = new Menu(timer, data);
-	dataprinter = new DataPrinter(printer, data);
 	tracer = new Tracer(data);
+	menu = new Menu(timer, data, tracer);
+	dataprinter = new DataPrinter(printer, data);
 	framecomputer = new FrameComputer(data, timer, tracer);
 	display = new Display(data, tracer, dataprinter);
 }

@@ -19,3 +19,11 @@ void Tracer::Draw()
 	for(int a=0; a < index; a++)
 		glVertex2f(tabx[a], taby[a]);
 }
+
+void Tracer::Reset()
+{
+	tabx[1] = 0.0;
+	taby[1] = 0.0;
+	index = 0;
+	t0=0;
+}

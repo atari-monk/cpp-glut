@@ -13,6 +13,7 @@ void Menu::menuSelect(int mode)
 			timer->stop();
 			data->active = false;
 			data->t=0;
+			tracer->Reset();
 			break;
 	}
 }
