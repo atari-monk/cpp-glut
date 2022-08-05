@@ -2,8 +2,9 @@
 
 Data::Data()
 {
-	obj1 = new obj(500,220,0);
-	obj2 = new obj(400,220,0);
+	obj1 = new obj(400, 220);
+	obj2 = new obj(600, 220);
+	select = 1;
 }
 
 Data::~Data()
@@ -12,19 +13,21 @@ Data::~Data()
 	delete obj2;
 }
 
-void Data::setup(int s)
+void Data::setup()
 {
-	switch(s)
+	obj1->reset();
+	obj2->reset();
+	switch(select)
 	{
 		case 1:
 		//constant speed
-		obj1->set_v(0,10);
-		obj2->set_v(0,15);
+		obj1->set_v(0, 10);
+		obj2->set_v(0, 15);
 		break;
 		case 2:
 		//constant acceleration
-		obj1->set_a(1,5);
-		obj2->set_a(1,4);
+		obj1->set_a(1, 5);
+		obj2->set_a(1, 4);
 		break;
 		case 3:
 		//deceleration
@@ -32,8 +35,8 @@ void Data::setup(int s)
 		break;
 		case 4:
 		//deceleration
-		obj1->set_v(10,100);
-		obj2->set_v(30,150);
+		obj1->set_v(10, 100);
+		obj2->set_v(30, 150);
 		break;
 		case 5:
 		//movement

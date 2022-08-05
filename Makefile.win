@@ -26,46 +26,46 @@ clean: clean-custom
 $(BIN): $(OBJ)
 	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
 
-main.o: main.cpp
+main.o: main.cpp tracer.h menu.h resizer.h timer.h framecomputer.h printer.h glutapp.h dataprinter.h object.h model.h display.h data.h keyboard.h
 	$(CPP) -c C:/kmazanek.gmail.com/Code/cpp-kinematics/main.cpp -o main.o $(CXXFLAGS) 
 
-object.o: object.cpp
+object.o: object.cpp object.h
 	$(CPP) -c C:/kmazanek.gmail.com/Code/cpp-kinematics/object.cpp -o object.o $(CXXFLAGS) 
 
-keyboard.o: keyboard.cpp
+keyboard.o: keyboard.cpp keyboard.h
 	$(CPP) -c C:/kmazanek.gmail.com/Code/cpp-kinematics/keyboard.cpp -o keyboard.o $(CXXFLAGS) 
 
-resizer.o: resizer.cpp
+resizer.o: resizer.cpp resizer.h
 	$(CPP) -c C:/kmazanek.gmail.com/Code/cpp-kinematics/resizer.cpp -o resizer.o $(CXXFLAGS) 
 
-display.o: display.cpp
+display.o: display.cpp tracer.h printer.h dataprinter.h object.h display.h data.h
 	$(CPP) -c C:/kmazanek.gmail.com/Code/cpp-kinematics/display.cpp -o display.o $(CXXFLAGS) 
 
-printer.o: printer.cpp
+printer.o: printer.cpp printer.h
 	$(CPP) -c C:/kmazanek.gmail.com/Code/cpp-kinematics/printer.cpp -o printer.o $(CXXFLAGS) 
 
-timer.o: timer.cpp
+timer.o: timer.cpp timer.h
 	$(CPP) -c C:/kmazanek.gmail.com/Code/cpp-kinematics/timer.cpp -o timer.o $(CXXFLAGS) 
 
-menu.o: menu.cpp
+menu.o: menu.cpp menu.h
 	$(CPP) -c C:/kmazanek.gmail.com/Code/cpp-kinematics/menu.cpp -o menu.o $(CXXFLAGS) 
 
-data.o: data.cpp
+data.o: data.cpp data.h object.h
 	$(CPP) -c C:/kmazanek.gmail.com/Code/cpp-kinematics/data.cpp -o data.o $(CXXFLAGS) 
 
-dataprinter.o: dataprinter.cpp
+dataprinter.o: dataprinter.cpp printer.h dataprinter.h
 	$(CPP) -c C:/kmazanek.gmail.com/Code/cpp-kinematics/dataprinter.cpp -o dataprinter.o $(CXXFLAGS) 
 
-tracer.o: tracer.cpp
+tracer.o: tracer.cpp tracer.h object.h data.h
 	$(CPP) -c C:/kmazanek.gmail.com/Code/cpp-kinematics/tracer.cpp -o tracer.o $(CXXFLAGS) 
 
-model.o: model.cpp
+model.o: model.cpp tracer.h menu.h resizer.h timer.h framecomputer.h printer.h dataprinter.h object.h model.h display.h data.h keyboard.h
 	$(CPP) -c C:/kmazanek.gmail.com/Code/cpp-kinematics/model.cpp -o model.o $(CXXFLAGS) 
 
-glutapp.o: glutapp.cpp
+glutapp.o: glutapp.cpp tracer.h menu.h resizer.h timer.h framecomputer.h printer.h glutapp.h dataprinter.h object.h model.h display.h data.h keyboard.h
 	$(CPP) -c C:/kmazanek.gmail.com/Code/cpp-kinematics/glutapp.cpp -o glutapp.o $(CXXFLAGS) 
 
-framecomputer.o: framecomputer.cpp
+framecomputer.o: framecomputer.cpp tracer.h timer.h framecomputer.h object.h data.h
 	$(CPP) -c C:/kmazanek.gmail.com/Code/cpp-kinematics/framecomputer.cpp -o framecomputer.o $(CXXFLAGS) 
 
 cpp-kinematics_private.res: cpp-kinematics_private.rc 

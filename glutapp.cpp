@@ -10,7 +10,7 @@ void GlutApp::setup()
 {
 	model->menu->addMenu();
 	model->display->setup();
-	model->data->setup(8);
+	model->data->setup();
 }
 
 void GlutApp::run()

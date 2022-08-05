@@ -7,9 +7,8 @@ void FrameComputer::Compute()
 		data->t=timer->getElapsedTimeInSec();
 	}
 	
-	int sel = 8;
-	data->obj1->getValues(data->t, sel);
-	data->obj2->getValues(data->t, sel);
+	data->obj1->getValues(data->t, data->select);
+	data->obj2->getValues(data->t, data->select);
 	
 	tracer->Calculate();
 }

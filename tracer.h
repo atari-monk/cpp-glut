@@ -18,8 +18,10 @@ public:
 	void Reset();
 private:
 	Data *data = nullptr;
-	double tabx[100];
-	double taby[100];
+	double x1[100];
+	double y1[100];
+	double x2[100];
+	double y2[100];
 	double t0;
 	int index;
 };

@@ -11,18 +11,13 @@ void Display::setup()
 void Display::display()
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	glColor3d(1,0,0);
-	
 	glBegin(GL_POINTS);
-	glColor3d(1,0,0);
-	
 	tracer->Draw();
-	
-	glVertex2f(data->obj1->x,data->obj1->y);
-	glVertex2f(data->obj2->x,data->obj2->y);
+	glColor3d(0, 0, 1);
+	glVertex2f(data->obj1->x, data->obj1->y);
+	glColor3d(1, 0, 0);
+	glVertex2f(data->obj2->x, data->obj2->y);
 	glEnd();
-	
 	dataprinter->output();
-	
 	glutSwapBuffers();
 }
