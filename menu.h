@@ -30,6 +30,9 @@ public:
 	}
 	void menuSelect(int mode);
 	void addMenu();
+	void OnSelect();
+	void OnStart();
+	void OnStop();
 };
 
 #endif

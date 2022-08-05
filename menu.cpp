@@ -6,29 +6,44 @@ void Menu::menuSelect(int mode)
 	switch (mode) 
 	{
 		case 1:
-			if(data->active == true) break;
-			data->select++;
-			data->setup();
-			if(data->select > 8)
-				data->select = 1;	
+			OnStart();
 			break;
 		case 2:
-			data->active = true;
-			timer->start();
+			OnStop();
 			break;
 		case 3:
-			timer->stop();
-			data->active = false;
-			data->t=0;
-			tracer->Reset();
+			OnSelect();
 			break;
 	}
 }
 
+void Menu::OnSelect()
+{
+	if(data->active == true) return;
+	data->select++;
+	if(data->select > 8)
+		data->select = 1;
+	data->setup();
+}
+
+void Menu::OnStart()
+{
+	data->active = true;
+	timer->start();
+}
+
+void Menu::OnStop()
+{
+	timer->stop();
+	data->active = false;
+	data->t=0;
+	tracer->Reset();
+}
+
 void Menu::addMenu()
 {
-	glutAddMenuEntry("Select", 1);
-	glutAddMenuEntry("Start", 2);
-	glutAddMenuEntry("Stop", 3);
+	glutAddMenuEntry("Start", 1);
+	glutAddMenuEntry("Stop", 2);
+	glutAddMenuEntry("Select", 3);
 	glutAttachMenu(GLUT_RIGHT_BUTTON);
 }

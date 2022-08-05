@@ -5,7 +5,7 @@
 
 class Printer {
 private:
-	void *font = GLUT_BITMAP_TIMES_ROMAN_24;
+	void *font = GLUT_BITMAP_HELVETICA_18;
 	char buffer[10];
 public:
 	void output(int x, int y, char *text, double r, double g, double b);
