@@ -1,4 +1,4 @@
-#include "resizer.h"
+#include "../h/resizer.h"
 #include <GL/freeglut.h>
 #include <GL/glu.h>
 

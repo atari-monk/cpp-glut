@@ -1,4 +1,4 @@
-#include "object.h"
+#include "../h/object.h"
 #include "math.h"
 
 obj::obj(double x, double y)

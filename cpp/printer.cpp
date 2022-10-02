@@ -1,4 +1,4 @@
-#include "printer.h"
+#include "../h/printer.h"
 
 void Printer::output(int x, int y, char *text, double r, double g, double b)
 {

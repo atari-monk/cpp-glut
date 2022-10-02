@@ -1,4 +1,4 @@
-#include "display.h"
+#include "../h/display.h"
 #include <GL/freeglut.h>
 #include <GL/glu.h>
 

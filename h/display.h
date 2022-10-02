@@ -1,9 +1,9 @@
 #ifndef DISPLAY_H
 #define DISPLAY_H
 
-#include "data.h"
-#include "tracer.h"
-#include "dataprinter.h"
+#include "../data.h"
+#include "../tracer.h"
+#include "../dataprinter.h"
 #include <stdexcept>
 
 class Display {

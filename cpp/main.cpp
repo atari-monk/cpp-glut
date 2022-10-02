@@ -3,8 +3,8 @@
 #include <GL/glu.h>
 #include <stdlib.h>
 #include <string.h>
-#include "model.h"
-#include "glutapp.h"
+#include "..\model.h"
+#include "..\glutapp.h"
 
 Model *model;
 GlutApp *glutApp;

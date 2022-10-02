@@ -1,4 +1,4 @@
-#include "keyboard.h"
+#include "../h/keyboard.h"
 #include <GL/freeglut.h>
 
 void Keyboard::key(unsigned char key, int x, int y)

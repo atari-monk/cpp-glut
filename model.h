@@ -1,13 +1,13 @@
 #ifndef DIFACTORY_H
 #define DIFACTORY_H
 
-#include "keyboard.h"
-#include "resizer.h"
+#include "h/keyboard.h"
+#include "h/resizer.h"
 #include "framecomputer.h"
-#include "display.h"
-#include "printer.h"
+#include "h/display.h"
+#include "h/printer.h"
 #include "menu.h"
-#include "timer.h"
+#include "h/timer.h"
 #include "data.h"
 #include "dataprinter.h"
 #include "tracer.h"

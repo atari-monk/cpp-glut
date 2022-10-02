@@ -1,7 +1,7 @@
 #ifndef MENU_H
 #define MENU_H
 
-#include "timer.h"
+#include "h/timer.h"
 #include "data.h"
 #include "tracer.h"
 #include <stdexcept>

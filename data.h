@@ -1,7 +1,7 @@
 #ifndef DATA_H
 #define DATA_H
 
-#include "object.h"
+#include "h/object.h"
 
 class Data {
 public:
