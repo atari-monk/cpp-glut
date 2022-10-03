@@ -33,7 +33,7 @@ clean: clean-custom
 $(BIN): $(OBJ)
 	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
 
-main.o: $(SDIR)main.cpp glutapp.h dataprinter.h model.h $(HDIR)resizer.h data.h $(HDIR)printer.h tracer.h $(HDIR)timer.h menu.h framecomputer.h $(HDIR)display.h $(HDIR)keyboard.h $(HDIR)object.h
+main.o: $(SDIR)main.cpp $(HDIR)glutapp.h $(HDIR)dataprinter.h $(HDIR)model.h $(HDIR)resizer.h $(HDIR)data.h $(HDIR)printer.h $(HDIR)tracer.h $(HDIR)timer.h $(HDIR)menu.h $(HDIR)framecomputer.h $(HDIR)display.h $(HDIR)keyboard.h $(HDIR)object.h
 	$(CPP) -c C:/kmazanek.gmail.com/Code/cpp-kinematics/$(SDIR)main.cpp -o $(ODIR)main.o $(CXXFLAGS) 
 
 object.o: $(SDIR)object.cpp $(HDIR)object.h
@@ -45,7 +45,7 @@ keyboard.o: $(SDIR)keyboard.cpp $(HDIR)keyboard.h
 resizer.o: $(SDIR)resizer.cpp $(HDIR)resizer.h
 	$(CPP) -c C:/kmazanek.gmail.com/Code/cpp-kinematics/$(SDIR)resizer.cpp -o $(ODIR)resizer.o $(CXXFLAGS) 
 
-display.o: $(SDIR)display.cpp $(HDIR)display.h $(HDIR)printer.h dataprinter.h
+display.o: $(SDIR)display.cpp $(HDIR)display.h $(HDIR)printer.h $(HDIR)dataprinter.h
 	$(CPP) -c C:/kmazanek.gmail.com/Code/cpp-kinematics/$(SDIR)display.cpp -o $(ODIR)display.o $(CXXFLAGS) 
 
 printer.o: $(SDIR)printer.cpp $(HDIR)printer.h
@@ -54,27 +54,26 @@ printer.o: $(SDIR)printer.cpp $(HDIR)printer.h
 timer.o: $(SDIR)timer.cpp $(HDIR)timer.h
 	$(CPP) -c C:/kmazanek.gmail.com/Code/cpp-kinematics/$(SDIR)timer.cpp -o $(ODIR)timer.o $(CXXFLAGS) 
 
-menu.o: menu.cpp menu.h
-	$(CPP) -c C:/kmazanek.gmail.com/Code/cpp-kinematics/menu.cpp -o menu.o $(CXXFLAGS) 
+menu.o: $(SDIR)menu.cpp $(HDIR)menu.h
+	$(CPP) -c C:/kmazanek.gmail.com/Code/cpp-kinematics/$(SDIR)menu.cpp -o $(ODIR)menu.o $(CXXFLAGS) 
 
-data.o: data.cpp data.h $(HDIR)object.h
-	$(CPP) -c C:/kmazanek.gmail.com/Code/cpp-kinematics/data.cpp -o data.o $(CXXFLAGS) 
+data.o: $(SDIR)data.cpp $(HDIR)data.h $(HDIR)object.h
+	$(CPP) -c C:/kmazanek.gmail.com/Code/cpp-kinematics/$(SDIR)data.cpp -o $(ODIR)data.o $(CXXFLAGS) 
 
-dataprinter.o: dataprinter.cpp $(HDIR)printer.h dataprinter.h
-	$(CPP) -c C:/kmazanek.gmail.com/Code/cpp-kinematics/dataprinter.cpp -o dataprinter.o $(CXXFLAGS) 
+dataprinter.o: $(SDIR)dataprinter.cpp $(HDIR)printer.h $(HDIR)dataprinter.h
+	$(CPP) -c C:/kmazanek.gmail.com/Code/cpp-kinematics/$(SDIR)dataprinter.cpp -o $(ODIR)dataprinter.o $(CXXFLAGS) 
 
-tracer.o: tracer.cpp data.h tracer.h $(HDIR)object.h
-	$(CPP) -c C:/kmazanek.gmail.com/Code/cpp-kinematics/tracer.cpp -o tracer.o $(CXXFLAGS) 
+tracer.o: $(SDIR)tracer.cpp $(HDIR)data.h $(HDIR)tracer.h $(HDIR)object.h
+	$(CPP) -c C:/kmazanek.gmail.com/Code/cpp-kinematics/$(SDIR)tracer.cpp -o $(ODIR)tracer.o $(CXXFLAGS) 
 
-model.o: model.cpp dataprinter.h model.h $(HDIR)resizer.h data.h $(HDIR)printer.h tracer.h $(HDIR)timer.h menu.h framecomputer.h $(HDIR)display.h $(HDIR)keyboard.h $(HDIR)object.h
-	$(CPP) -c C:/kmazanek.gmail.com/Code/cpp-kinematics/model.cpp -o model.o $(CXXFLAGS) 
+model.o: $(SDIR)model.cpp $(HDIR)dataprinter.h $(HDIR)model.h $(HDIR)resizer.h $(HDIR)data.h $(HDIR)printer.h $(HDIR)tracer.h $(HDIR)timer.h $(HDIR)menu.h $(HDIR)framecomputer.h $(HDIR)display.h $(HDIR)keyboard.h $(HDIR)object.h
+	$(CPP) -c C:/kmazanek.gmail.com/Code/cpp-kinematics/$(SDIR)model.cpp -o $(ODIR)model.o $(CXXFLAGS) 
 
-glutapp.o: glutapp.cpp glutapp.h dataprinter.h model.h $(HDIR)resizer.h data.h $(HDIR)printer.h tracer.h $(HDIR)timer.h menu.h framecomputer.h $(HDIR)display.h $(HDIR)keyboard.h $(HDIR)object.h
-	$(CPP) -c C:/kmazanek.gmail.com/Code/cpp-kinematics/glutapp.cpp -o glutapp.o $(CXXFLAGS) 
+glutapp.o: $(SDIR)glutapp.cpp $(HDIR)glutapp.h $(HDIR)dataprinter.h $(HDIR)model.h $(HDIR)resizer.h $(HDIR)data.h $(HDIR)printer.h $(HDIR)tracer.h $(HDIR)timer.h $(HDIR)menu.h $(HDIR)framecomputer.h $(HDIR)display.h $(HDIR)keyboard.h $(HDIR)object.h
+	$(CPP) -c C:/kmazanek.gmail.com/Code/cpp-kinematics/$(SDIR)glutapp.cpp -o $(ODIR)glutapp.o $(CXXFLAGS) 
 
-framecomputer.o: framecomputer.cpp data.h tracer.h $(HDIR)timer.h framecomputer.h $(HDIR)object.h
-	$(CPP) -c C:/kmazanek.gmail.com/Code/cpp-kinematics/framecomputer.cpp -o framecomputer.o $(CXXFLAGS) 
+framecomputer.o: $(SDIR)framecomputer.cpp $(HDIR)data.h $(HDIR)tracer.h $(HDIR)timer.h $(HDIR)framecomputer.h $(HDIR)object.h
+	$(CPP) -c C:/kmazanek.gmail.com/Code/cpp-kinematics/$(SDIR)framecomputer.cpp -o $(ODIR)framecomputer.o $(CXXFLAGS) 
 
 cpp-kinematics_private.res: cpp-kinematics_private.rc 
-	$(WINDRES) -i cpp-kinematics_private.rc --input-format=rc -o cpp-kinematics_private.res -O coff 
-
+	$(WINDRES) -i cpp-kinematics_private.rc --input-format=rc -o cpp-kinematics_private.res -O coff

@@ -1,4 +1,4 @@
-#include "data.h"
+#include "../h/data.h"
 
 Data::Data()
 {

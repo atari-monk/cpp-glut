@@ -1,4 +1,4 @@
-#include "model.h"
+#include "../h/model.h"
 
 void Model::Setup()
 {

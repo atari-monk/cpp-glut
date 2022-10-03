@@ -2,7 +2,7 @@
 #define DATAPRINTER_H
 
 #include "data.h"
-#include "h/printer.h"
+#include "printer.h"
 #include <stdexcept>
 
 class DataPrinter {

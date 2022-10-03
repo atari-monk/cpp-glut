@@ -1,4 +1,4 @@
-#include "menu.h"
+#include "../h/menu.h"
 #include <GL/freeglut.h>
 
 void Menu::menuSelect(int mode)

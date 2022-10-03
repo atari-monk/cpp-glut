@@ -2,7 +2,7 @@
 #define FRAMECOMPUTER_H
 
 #include "data.h"
-#include "h/timer.h"
+#include "timer.h"
 #include "tracer.h"
 
 class FrameComputer {

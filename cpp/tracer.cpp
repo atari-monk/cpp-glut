@@ -1,4 +1,4 @@
-#include "tracer.h"
+#include "../h/tracer.h"
 
 #include <GL/freeglut.h>
 

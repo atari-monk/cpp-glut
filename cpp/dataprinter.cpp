@@ -1,4 +1,4 @@
-#include "dataprinter.h"
+#include "../h/dataprinter.h"
 
 void DataPrinter::output()
 {

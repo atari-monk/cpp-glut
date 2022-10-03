@@ -1,4 +1,4 @@
-#include "framecomputer.h"
+#include "../h/framecomputer.h"
 
 void FrameComputer::Compute()
 {

@@ -1,4 +1,4 @@
-#include "glutapp.h"
+#include "../h/glutapp.h"
 
 void GlutApp::setup(int argc, char *argv[])
 {
