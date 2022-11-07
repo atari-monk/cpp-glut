@@ -12,7 +12,7 @@
 // Copyright (c) 2003 Song Ho Ahn
 //////////////////////////////////////////////////////////////////////////////
 
-#include "timer.h"
+#include "../h/timer.h"
 #include <stdlib.h>
 
 Timer::Timer()
